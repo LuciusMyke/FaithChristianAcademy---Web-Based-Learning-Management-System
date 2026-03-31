@@ -84,10 +84,28 @@ body {
 	z-index: 500;
 	padding-bottom: 20px;
 	box-sizing: content-box;
+	padding-left: 16px;
+	gap: 10px;
 }
 #sidebar .brand .bx {
 	min-width: 60px;
 	display: flex;
+	justify-content: center;
+}
+#sidebar.hide .brand {
+	justify-content: center;
+	padding-left: 0;
+}
+#sidebar.hide .brand .text {
+	display: none;
+}
+#sidebar.hide .brand .bx {
+	min-width: 0;
+}
+#sidebar.hide .brand .text {
+	display: none;
+}
+#sidebar.hide .brand {
 	justify-content: center;
 }
 #sidebar .side-menu {
@@ -187,9 +205,105 @@ body {
 	width: calc(100% - 60px);
 	left: 60px;
 }
+#sidebar.hide ~ #content .enrollment-wrapper {
+	margin-left: 85px !important;
+	margin-right: 22px !important;
+	max-width: calc(100% - 107px);
+}
 
+/* Desktop Enrollment Wrapper */
+.enrollment-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+    transition: all .3s ease;
+}
 
+/* --- FIXED MOBILE RESPONSIVE QUERIES --- */
+@media screen and (max-width: 768px) {	
+    #sidebar {
+        width: 240px !important; /* Fixed width para sa mobile */
+        left: 0 !important;
+        z-index: 2000;
+    }
 
+    #sidebar.hide {
+        width: 60px !important; /* Kapag nakatago, 60px lang */
+    }
+
+    /* Siguraduhing laging nakikita ang Brand/Logo sa Mobile */
+    #sidebar .brand {
+        display: flex !important;
+        height: 60px;
+        padding-left: 15px;
+    }
+
+    #sidebar .brand .text {
+        display: block !important;
+        font-size: 18px;
+    }
+
+    #sidebar.hide .brand .text {
+        display: none !important;
+    }
+
+    /* CONTENT ADJUSTMENT: Dito natin itatama ang overlap */
+    #content {
+        width: calc(100% - 240px) !important;
+        left: 240px !important;
+        transition: .3s ease;
+    }
+
+    /* Kapag ang sidebar ay naka-hide, i-adjust ang content sa 60px */
+    #sidebar.hide ~ #content {
+        width: calc(100% - 60px) !important;
+        left: 60px !important;
+    }
+
+    /* ENROLLMENT WRAPPER FIX: Tinanggal ang malalaking margins */
+    .enrollment-wrapper {
+        width: 100% !important;
+        margin: 20px 0 !important; /* Inalis ang 15% margin */
+        padding: 0 15px !important; /* Konting padding para hindi sagad sa screen */
+        left: 0 !important;
+        box-sizing: border-box;
+    }
+
+    /* Stepper Adjustment para hindi mag-overlap ang text */
+    .horizontal-stepper {
+        padding: 15px 5px !important;
+        gap: 5px;
+    }
+
+    .horizontal-stepper .step-instruction {
+        display: none; /* Itago ang mahabang text sa mobile para malinis */
+    }
+
+    /* NAVBAR: Hamburger and Logo alignment */
+    #content nav {
+        padding: 0 15px;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    #content nav .bx.bx-menu {
+        font-size: 24px;
+        order: -1; /* Nilagay sa kaliwa */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Mas maliit na sidebar para sa sobrang liliit na phone */
+    #sidebar:not(.hide) {
+        width: 200px !important;
+    }
+    #sidebar:not(.hide) ~ #content {
+        left: 200px !important;
+        width: calc(100% - 200px) !important;
+    }
+}
 
 /* NAVBAR */
 #content nav {
@@ -203,7 +317,14 @@ body {
 	position: sticky;
 	top: 0;
 	left: 0;
-	z-index: 1000;
+	z-index: 3000; /* Ensure nav (especially hamburger) is above sidebar */
+}
+
+#content nav .bx.bx-menu {
+	cursor: pointer;
+	color: var(--dark);
+	position: relative;
+	z-index: 3001;
 }
 #content nav::before {
 	content: '';
@@ -701,7 +822,7 @@ body.dark #content nav .profile-menu li a {
 }
 
 
-
+	
 
 
 /* Media Query for Smaller Screens */

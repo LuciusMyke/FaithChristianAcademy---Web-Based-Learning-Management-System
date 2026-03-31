@@ -118,9 +118,162 @@
 </nav>
 <!-- NAVBAR -->
 
+<main>
+<div class="enrollment-wrapper" style="max-width: 500px; min-height: 201px; margin: 0; padding: 0; box-sizing:border-box; position: relative; z-index: 800;">
 
-		<!-- MAIN -->
-	</section>
+  <div class="enrollment-status" style="background: #fff; text-align:left; margin: 0; padding: 10px 12px; font-family:inherit; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+    <h2 style="margin:0; font-size:1.2rem; color:#064B8E;">Enrollment Status</h2>
+    <p style="margin:4px 0 0; color:#555;">In progress: complete each step to finalize enrollment.</p>
+  </div>
+  <div class="horizontal-stepper" style="margin-top: 16px;">
+
+  <div class="step completed">
+    <div class="circle"></div>
+    <div class="label">Step 1</div>
+    <div class="step-instruction">Lorem ipsum dolor sit amet.</div>
+  </div>
+  <div class="step active">
+    <div class="circle"></div>
+    <div class="label">Step 2</div>
+    <div class="step-instruction">Consectetur adipiscing elit.</div>
+  </div>
+  <div class="step empty">
+    <div class="circle"></div>
+    <div class="label">Step 3</div>
+    <div class="step-instruction">Sed do eiusmod tempor.</div>
+  </div>
+  <div class="step empty">
+    <div class="circle"></div>
+    <div class="label">Step 4</div>
+    <div class="step-instruction">Ut labore et dolore magna aliqua.</div>
+  </div>
+</div>
+
+<div class="enrollment-description" style="max-width:780px; margin: 12px auto 24px; padding: 0 16px; color:#444; font-size:0.95rem; line-height:1.6; text-align:center;">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac lacus et mauris condimentum aliquet a nec odio. Donec gravida, justo in facilisis molestie, nibh quam molestie lectus, et sodales sem tellus ut nibh. Curabitur varius egestas risus, non lobortis est vestibulum eu. Sed blandit ligula ac orci placerat, sit amet pretium ligula luctus.</p>
+</div>
+</main>
+</section>
+
+<style>
+/* Horizontal Stepper - Responsive & Fixed */
+.horizontal-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 18px 12px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border: 1px solid #e6e6e6;
+}
+
+.enrollment-wrapper {
+  max-width: 500px;
+  min-height: 201px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .enrollment-wrapper {
+    width: 100% !important;
+    margin: 20px 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .horizontal-stepper .step-instruction {
+    max-width: 80px;
+    font-size: 10px;
+  }
+}
+
+.horizontal-stepper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: #ddd;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.horizontal-stepper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  height: 2px;
+  width: 33.333%; /* Step 2 active (1 completed + active) out of 3 intervals */
+  background-color: rgb(6,150,215);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.horizontal-stepper .step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  z-index: 3;
+}
+
+.horizontal-stepper .step .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  background-color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.horizontal-stepper .step.completed .circle {
+  background-color: rgb(6,150,215);
+  border-color: rgb(6,150,215);
+}
+
+.horizontal-stepper .step.active .circle {
+  border-color: rgb(6,150,215);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(6,150,215,0.18);
+}
+
+.horizontal-stepper .step.empty .circle {
+  border-color: #ccc;
+  background-color: white;
+}
+
+.horizontal-stepper .step.completed .label,
+.horizontal-stepper .step.active .label {
+  color: rgb(6,150,215);
+  font-weight: 600;
+}
+
+.horizontal-stepper .step-instruction {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #666;
+  max-width: 100px;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.horizontal-stepper .label {
+  margin-top: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+</style>
 	<!-- CONTENT -->
 	
 
