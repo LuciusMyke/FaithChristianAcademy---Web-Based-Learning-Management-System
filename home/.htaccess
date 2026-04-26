@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^dashboard$ home/dashboard.php [L]
+RewriteRule ^grades$ home/analytics.php [L]
+RewriteRule ^profile$ home/profile.php [L]
